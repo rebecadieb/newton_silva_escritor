@@ -1,7 +1,9 @@
 
-# newton_silva_escritor
+# Shiny app
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Este repositório armaneza o desenvolvimento de uma dashboard em Shiny com o objetivo de aprofundar os estudos na ferramenta e posteriormente divulgar o trabalho do autor Newton Silva.
+Este repositório armaneza o desenvolvimento de Shiny app, O objetivo desse desenvolvimento é aprofundar os estudos na ferramenta e, consequentemente, divulgar o trabalho do autor Newton Silva.
+ 
+[Link do Shiny app](https://dieb-dashboard.shinyapps.io/newton_silva_escritor/)
