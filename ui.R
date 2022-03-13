@@ -1,3 +1,5 @@
+# Carregamentos -----------------------------------------------------------
+
 library(dplyr)
 library(readr)
 library(lubridate)
@@ -9,10 +11,15 @@ library(flexdashboard)
 library(hrbrthemes)
 library(wordcloud)
 
+# UI ----------------------------------------------------------------------
+
 theme <- bslib::bs_theme(version = 4)
 
 shinyUI(fluidPage(theme = theme,
   tags$head(tags$style(HTML(".shiny-output-error-validation {color: red;}"))),
+
+# Página sobre o autor ----------------------------------------------------
+
   titlePanel("Newton Silva Escritor"),
   navbarPage("",
     tabPanel( "sobre o autor",
@@ -20,12 +27,12 @@ shinyUI(fluidPage(theme = theme,
         column(2, align="center",
             tags$img(src="WhatsApp Image 2021-06-22 at 16.40.46.jpeg", width="180px", height="210px")),
         column(4, align="center",
-          p("Este aplicativo web foi desenvolvido com o intuito de reunir contos, crônicas, poesias e outras classificações do autor, 
+          p("Este aplicativo web foi desenvolvido com o intuito de reunir contos, crônicas, poesias e outras classificações do autor,
             facilitando a busca pelos textos tanto para leitura quanto para coleta de informações, fornecendo também estatísticas e curiosidades.", style="text-align:justify;color:black;background-color:lavender;padding:15px;border-radius:10px"),
           br(),
-          p(strong("Newton Silva"), "(Fortaleza, novembro de 1960) é chargista, jornalista e ilustrador brasileiro. Começou a ilustrar a seção de quadrinhos do antigo jornal Tribuna do Ceará em 1985. 
-            Em 1988 passou a colaborar no jornal Diário do Nordeste. 
-            A tira Jujumento, o jumento elemental, foi premiada como primeiro colocado no 1º Festival Nacional de Cinema de Animação, 
+          p(strong("Newton Silva"), "(Fortaleza, novembro de 1960) é chargista, jornalista e ilustrador brasileiro. Começou a ilustrar a seção de quadrinhos do antigo jornal Tribuna do Ceará em 1985.
+            Em 1988 passou a colaborar no jornal Diário do Nordeste.
+            A tira Jujumento, o jumento elemental, foi premiada como primeiro colocado no 1º Festival Nacional de Cinema de Animação,
             Quadrinhos e Games da região serrana do Rio de Janeiro.",style="text-align:justify;color:black;background-color:lavender;padding:15px;border-radius:10px"),
           br(),
           p(strong("Premiações:"),
@@ -52,13 +59,10 @@ shinyUI(fluidPage(theme = theme,
       hr(),
       p(em("Desenvolvido por "), a(href="https://github.com/rebecadieb", "Rebeca Dieb", target="_blank"), style="text-align:center; font-family: times")
     ),
-    tabPanel("leia",
-      p(strong("Busca por títulos e informações")),
-      dataTableOutput("tabela_titulos"),
-      br(),
-      htmlOutput("drilldown")
-    ),
-    tabPanel("descubra", 
+
+# Página descubra ---------------------------------------------------------
+
+    tabPanel("descubra",
        fluidRow(
           column(4, shinydashboard::valueBoxOutput('total_titulos', width = NULL)),
           column(4, shinydashboard::valueBoxOutput('tempo_publi', width = NULL)),
@@ -70,7 +74,17 @@ shinyUI(fluidPage(theme = theme,
             plotOutput("frequencia_palavras")
           )
         )
+      ),
+
+# Página leia -------------------------------------------------------------
+
+    tabPanel("leia",
+         p(strong("Busca por títulos e informações")),
+         dataTableOutput("tabela_titulos"),
+         br(),
+         htmlOutput("drilldown")
       )
+
     )
   )
 )
